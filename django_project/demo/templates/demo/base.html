@@ -1,0 +1,110 @@
+{% load crispy_forms_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="Responsive">
+    {% if title %}
+        <title>Demo TODO - {{ title }}</title>
+    {% else %}
+        <title>Demo TODO</title>
+    {% endif %}
+
+    <link rel="stylesheet"
+          href="{% static 'demo/plugins/jquery-datatable/dataTables.bootstrap4.min.css' %}">
+    <link rel="stylesheet" href="{% static  'demo/plugins/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static  'demo/plugins/fullcalendar/fullcalendar.min.css' %}">
+    <link rel="stylesheet"
+          href="{% static  'demo/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css' %}"/>
+    <link rel="stylesheet"
+          href="{% static  'demo/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css' %}">
+    <link rel="stylesheet"
+          href="{% static  'demo/plugins/bootstrap-select/css/bootstrap-select.css' %}">
+    <link rel="stylesheet"
+          href="{% static  'demo/plugins/jvectormap/jquery-jvectormap-2.0.3.min.css' %}"/>
+    <link rel="stylesheet" href="{% static  'demo/plugins/charts-c3/plugin.css' %}"/>
+
+    <link rel="stylesheet" href="{% static  'demo/plugins/morrisjs/morris.min.css' %}"/>
+    <link rel="stylesheet" href="{% static  'demo/plugins/select2/select2.css' %}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'demo/css/style.min.css' %}">
+</head>
+
+<body class="theme-blush">
+
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="m-t-30"><img class="zmdi-hc-spin" src="{% static 'demo/images/loader.svg' %}"
+                    width="48" height="48" alt="Loader"></div>
+            <p>Please wait...</p>
+        </div>
+    </div>
+
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+
+    <!-- Left Sidebar -->
+    <aside id="leftsidebar" class="sidebar">
+        <div class="navbar-brand">
+            <button class="btn-menu ls-toggle-btn" type="button"><i class="zmdi zmdi-menu"></i></button>
+            <span><a href=""></a> Demo Dental</span></a>
+        </div>
+                    <div class="menu">
+                        <ul class="list">
+                            {% if title == 'Dashboard' %}
+                            <li class="active open">
+                                {% else %}
+                            <li>
+                                {% endif %}
+                                <a href="{% url 'dashboard' %}"><i
+                                        class="zmdi zmdi-home"></i><span>Dashboard</span></a>
+                            </li>
+                            {% if title == 'Todo' %}
+                            <li class="active open">
+                                {% else %}
+                            <li>
+                                {% endif %}
+                                <a href="{% url 'todo-list' %}"><i
+                                        class="zmdi zmdi-home"></i><span>Todo List</span></a>
+                            </li>
+                        </ul>
+                    </div>
+    </aside>
+    <!-- Main Content -->
+
+    <section class="content">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-lg-7 col-md-6 col-sm-12">
+                    <button class="btn btn-primary btn-icon mobile_menu" type="button"><i
+                            class="zmdi zmdi-sort-amount-desc"></i></button>
+                </div>
+            </div>
+
+            {% block content %}
+            {% endblock content %}
+        </div>
+    </section>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script src="{% static 'demo/bundles/libscripts.bundle.js' %}"></script>
+    <!-- Lib Scripts Plugin Js -->
+    
+    <script src="{% static 'demo/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'demo/plugins/bootstrap/js/popper.min.js' %}"></script>
+    <script src="{% static 'demo/bundles/vendorscripts.bundle.js' %}"></script>
+
+    {% block initial_script %}
+    {% endblock initial_script %}
+    <script src="{% static 'demo/bundles/mainscripts.bundle.js' %}"></script>
+
+    {% block final_script %}
+    {% endblock final_script %}
+
+</body>
+
+</html>

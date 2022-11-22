@@ -1,0 +1,90 @@
+{% extends "demo/base.html" %}
+{% load static %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="row clearfix">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="body">
+                        <div>
+                            <div class="row">
+                                <div class="col-sm-11">
+                                    <h2>Todo List</h2>
+                                </div>
+                                    <div class="col-sm-1 mt-0">
+                                        <a class="btn btn-info" href="{% url 'add-todo' %}"
+                                        title="Add Expense">
+                                            <i class="zmdi zmdi-collection-plus"></i></a>
+                                    </div>
+                            </div>
+                        </div>
+
+                        <hr>
+                        <div class="table-responsive">
+                                <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Todo Name</th>
+                                        <th>Category</th>
+                                        <th>Status</th>
+                                        <th>Edit</th>
+                                        <th>Delete</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for todo in object_list %}
+                                        <tr>
+                                            <td>
+                                                {{ todo.id }}
+                                            </td>
+                                            <td>
+                                                    {{ todo.name }}
+                                            </td>
+                                            <td>
+                                                <span class="patient-tag" style="color: {{ todo.category.color }}; background-color: {{ todo.category.bgcolor }};">{{ todo.category }}</span></td>
+                                            <td>
+                                                {% if todo.is_completed %}
+                                                <p style="color:Green"> Completed </p>
+                                                {% else %}
+                                                <p style="color:Red"> Not Completed </p>
+                                                {% endif %}
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-block btn-primary"
+                                                href="{% url 'update-todo' todo.id %}"
+                                                title="Edit Todo"><i
+                                                        class="zmdi zmdi-comment-edit"></i></a>
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-block btn-danger"
+                                                href="{% url 'delete-todo' todo.id %}"
+                                                title="Delete Todo"><i
+                                                        class="zmdi zmdi-delete"></i></a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+{% block initial_script %}
+    <script src="{% static 'demo/bundles/datatablescripts.bundle.js' %}"></script>
+    <script src="{% static 'demo/plugins/jquery-datatable/buttons/dataTables.buttons.min.js' %}"></script>
+    <script src="{% static 'demo/plugins/jquery-datatable/buttons/buttons.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'demo/plugins/jquery-datatable/buttons/buttons.colVis.min.js' %}"></script>
+    <script src="{% static 'demo/plugins/jquery-datatable/buttons/buttons.flash.min.js' %}"></script>
+    <script src="{% static 'demo/plugins/jquery-datatable/buttons/buttons.html5.min.js' %}"></script>
+    <script src="{% static 'demo/plugins/jquery-datatable/buttons/buttons.print.min.js' %}"></script>
+{% endblock initial_script %}
+
+{% block final_script %}
+    <script src="{% static 'demo/js/pages/tables/jquery-datatable.js' %}"></script>
+{% endblock %}

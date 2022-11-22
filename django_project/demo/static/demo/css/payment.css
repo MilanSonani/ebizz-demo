@@ -1,0 +1,102 @@
+@import url('https://rsms.me/inter/inter-ui.css');
+
+::selection {
+    background: #e4dbdb;
+}
+
+::-webkit-selection {
+    background: #e4dbdb;
+}
+
+::-moz-selection {
+    background: #ced0da;
+}
+
+body {
+    background: white;
+    font-family: 'Inter UI', sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+.page {
+    background: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 40px);
+    position: absolute;
+    place-content: center;
+    width: calc(100% - 40px);
+}
+
+@media (max-width: 767px) {
+    .page {
+        height: auto;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+    }
+}
+
+.container {
+    display: flex;
+    height: 320px;
+    margin: 0 auto;
+    width: 640px;
+}
+
+@media (max-width: 767px) {
+    .container {
+        flex-direction: column;
+        height: 630px;
+        width: 320px;
+    }
+}
+
+.left {
+    background: white;
+    height: calc(100% - 40px);
+    top: 20px;
+    position: relative;
+    width: 50%;
+}
+
+@media (max-width: 767px) {
+    .left {
+        height: 100%;
+        left: 20px;
+        width: calc(100% - 40px);
+        max-height: 270px;
+    }
+}
+
+.login {
+    font-size: 43px;
+    font-weight: 1000;
+    margin: 64px 40px 58px;
+    color: #041520;
+}
+
+.right {
+    background: #162557;
+    box-shadow: 0px 0px 40px 16px rgba(0, 0, 0, 0.22);
+    color: #F1F1F2;
+    position: relative;
+    width: 50%;
+
+}
+
+.form {
+    margin-bottom: auto;
+    font-weight: 500;
+    font-size: 25px;
+    margin: 52px 25px 55px;
+}
+
+@media (max-width: 767px) {
+    .right {
+        flex-shrink: 0;
+        height: 100%;
+        width: 100%;
+        max-height: 350px;
+    }
+}
